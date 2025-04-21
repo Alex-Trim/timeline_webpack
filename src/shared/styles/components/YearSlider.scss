@@ -1,0 +1,152 @@
+.yearSlider {
+  position: relative;
+  display: flex;
+  flex-grow: 2;
+  padding: 0 clamp(1.25em, 2vw, 2em);
+  height: 100%;
+
+  .swiper {
+    flex-grow: 2;
+  }
+  .swiper-wrapper {
+    align-items: center;
+  }
+
+  &__item,
+  .card {
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    @media (min-width: 600px) {
+      justify-content: center;
+    }
+  }
+
+  .card {
+    min-height: 25.5rem;
+    @media (min-width: 600px) {
+      min-height: 33rem;
+    }
+    &__title {
+      color: #5d5fef;
+      font-weight: 700;
+      font-size: clamp(3.5rem, 15vw, 12.5rem);
+      line-height: clamp(72px, 15vw, 160px);
+      pointer-events: none;
+      .highlight {
+        color: #ef5da8;
+      }
+    }
+    .year-display {
+      display: flex;
+      column-gap: 0.5em;
+    }
+  }
+
+  &__slideInfo {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    row-gap: clamp(10px, 2vw, 20px);
+  }
+
+  &__slideBtn {
+    display: flex;
+    flex-direction: row;
+    column-gap: clamp(10px, 2vw, 20px);
+  }
+
+  &__prev,
+  &__next {
+    border-radius: 100%;
+    border: 1px solid #42567a;
+    background-image: url(../../../../public/images/icon/arrow.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: clamp(12.5px, 4vw, 40px);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  &__next {
+    left: 100px;
+    transform: rotate(-180deg);
+  }
+
+  &__slideCounter {
+    color: #42567a;
+  }
+  .mobilePagination {
+    background: #42567a;
+  }
+  @media (min-width: 600px) {
+    margin-bottom: 56px;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      width: 100%;
+      height: 1px;
+      background-color: #42567a10;
+      transform: translateY(-0.5px);
+    }
+    .year-pagination-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      padding: 0;
+      background: #42567a;
+      border-radius: 50%;
+      pointer-events: auto;
+      margin: 0 !important;
+      opacity: 1;
+      transition: padding 0.2s linear;
+      transform-origin: center;
+      span {
+        width: min-content;
+        height: min-content;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        opacity: 0;
+        pointer-events: none;
+        cursor: none;
+      }
+      &.swiper-pagination-bullet-active,
+      &:hover {
+        padding: 28px;
+        background: #f4f5f9;
+        border: 1px solid #42567a;
+        span {
+          opacity: 1;
+        }
+      }
+    }
+    .swiper-pagination {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 520px;
+      height: 520px;
+      pointer-events: none;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #42567a10;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+.eventSlider {
+  min-height: 210px;
+  position: absolute;
+  bottom: 141px;
+  left: 5%;
+  width: 90%;
+  margin-inline: auto;
+  border-top: 1px solid #c7cdd9;
+  @media (min-width: 600px) {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    border: none;
+    .swiper {
+      padding: 0 clamp(1em, 5vw, 4em);
+    }
+  }
+  .card {
+    padding: 1em;
+    &__title {
+      margin-bottom: 1em;
+      color: #3877ee;
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-family: "Bebas Neue", sans-serif;
+    }
+    &__description {
+      color: #42567a;
+      line-height: 30px;
+      font-size: 1.25rem;
+    }
+  }
+  &__prev,
+  &__next {
+    margin: 0;
+    position: absolute;
+    height: 100%;
+    width: 4em;
+    top: 0;
+    left: 0;
+    background-color: #f4f5f9;
+    z-index: 10;
+    &:hover {
+      &::after {
+        box-shadow: 0px 0px 8px 0px #3878ee5a;
+      }
+    }
+  }
+  &__next {
+    left: auto;
+    right: 0;
+  }
+  &__prev::after,
+  &__next::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: min-content;
+    height: min-content;
+    background-image: url(../../../../public/images/icon/min-arrow.svg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    padding: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 0px 8px 0px transparent;
+    opacity: 1;
+    transition: all 0.3s linear;
+  }
+
+  &__prev::after {
+    transform: rotate(-180deg);
+  }
+  .swiper-button-disabled {
+    &::after {
+      opacity: 0 !important;
+      pointer-events: none;
+    }
+  }
+  .swiper-slide {
+    opacity: 0.5;
+    transition: all 0.3s linear;
+  }
+  .swiper-slide-active {
+    opacity: 1;
+  }
+  @media (min-width: 600px) {
+    .swiper-slide {
+      opacity: 1;
+    }
+  }
+}
